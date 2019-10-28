@@ -2,10 +2,10 @@
 
 int main(void)
 {
-		int num = 0;
+		int liczb = 0;
 		printf("Podaj liczbę, która ma być podniesiona do kwadratu: ");
-		scanf("%i", &num);
-		printf("%ix%i=%i\n",num, num, num*num);
+		scanf("%i", &liczb);
+		printf("%ix%i=%i\n",liczb, liczb, liczb*liczb);
 		return 0;
 }
 
