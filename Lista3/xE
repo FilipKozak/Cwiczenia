@@ -1,0 +1,33 @@
+int licznik = kwota = x; //za x wstaw kwotę do rozbicia 
+int il_setek=0,il_piecdziesiatek=0, il_dziesiatek=0, il_piatek=0, il_dwojek=0, il_jedynek=0;
+while(licznik>=100)
+{
+     il_setek+=1;
+     licznik = licznik - 100;
+}
+while(licznik>=50)
+{
+     il_piecdziesiatek+=1;
+     licznik = licznik - 50;
+}
+while(licznik>=10)
+{
+     il_dziesiatek+=1;
+     licznik = licznik - 10;
+}
+while(licznik>=5)
+{
+     il_piatek+=1;
+     licznik = licznik - 5;
+}
+while(licznik>=2)
+{
+     il_dwojek+=1;
+     licznik = licznik - 2;
+}
+while(licznik>=1)
+{
+     il_jedynek+=1;
+     licznik = licznik - 1;
+}
+//tutaj wyświetl sobie zmienne il_* które wyświetlą Ci nominały w takiej ilości, aby było ich najmniej. 
