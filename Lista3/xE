@@ -1,33 +1,37 @@
-int licznik = kwota = x; //za x wstaw kwotę do rozbicia 
-int il_setek=0,il_piecdziesiatek=0, il_dziesiatek=0, il_piatek=0, il_dwojek=0, il_jedynek=0;
-while(licznik>=100)
+#include <stdio.h>
+main ()
 {
-     il_setek+=1;
-     licznik = licznik - 100;
-}
-while(licznik>=50)
+int change;
+int coins;
+int remainder;
+ 
+printf ("Please enter an amount of change from 0-99.\n");
+scanf ("%d", &change);
+ 
+if (change>=25)
 {
-     il_piecdziesiatek+=1;
-     licznik = licznik - 50;
+coins = change/25;
+printf ("Quarters: %d\n", coins);
+remainder = change%25;
 }
-while(licznik>=10)
+ 
+if (remainder>=10)
 {
-     il_dziesiatek+=1;
-     licznik = licznik - 10;
+coins = remainder/10;
+printf ("Dimes: %d\n", coins);
+remainder = remainder%10;
 }
-while(licznik>=5)
+ 
+if (remainder>=5)
 {
-     il_piatek+=1;
-     licznik = licznik - 5;
+coins = remainder/5;
+printf ("Nickles: %d\n", coins);
+remainder = remainder%5;
 }
-while(licznik>=2)
+ 
+if (remainder>0)
 {
-     il_dwojek+=1;
-     licznik = licznik - 2;
+printf ("Pennies: %d\n", remainder);
 }
-while(licznik>=1)
-{
-     il_jedynek+=1;
-     licznik = licznik - 1;
+ 
 }
-//tutaj wyświetl sobie zmienne il_* które wyświetlą Ci nominały w takiej ilości, aby było ich najmniej. 
