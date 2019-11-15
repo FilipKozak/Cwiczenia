@@ -1,0 +1,155 @@
+#include <stdio.h> 
+
+int main() 
+{ 
+	int liczba; 
+	int t, d, s, j;		/* deklaracja liczb tysiecznych, setnych, 					dziesietnych i jednosci */
+	int i = 0;
+
+	printf ("SLOWNIE\n");
+
+		// wpisywanie kwoty 
+
+	printf("Wpisz kwote mniejsza od 10 000, aby otrzymac wartosc tej kwoty slownie.\n");
+	printf("\nPodaj kwote: "); 
+	scanf("%d", &liczba); 
+	
+  	
+	/* w przypadku, gdy podana kwota bedzie wieksza od 10 000 lub mniejsza 		od 0 */
+	// walidacja
+
+	while ( liczba >= 10000 || liczba < 0) 
+	{
+	printf ("Kwota musi byc nieujemna i mniejsza od 10 000!\nSprobuj ponownie. \n");
+	printf("\nPodaj kwote: ");
+	scanf("%d", &liczba); 
+	i++;
+	}
+	
+	printf("\nPodana kwota slownie:\n");
+
+	// w przypadku, gdy podana kwota wynosi 0 
+	if (liczba == 0) 
+	{
+	printf ("zero zlotych");
+	} 
+	
+	// w przypadku, gdy podana kwota wynosi 1
+	if (liczba == 1)
+	{
+	printf ("jeden zloty");
+	}
+
+	/* gdy liczba bedzie prawidlowa */ 
+
+	// obliczenie ile bedzie liczb tysiecznych
+	t = liczba/1000;
+	// obliczenie ile bedzie liczb setnych 
+	s = (liczba-t*1000)/100;
+	// obliczenie ile bedzie liczb dziesietnych
+	d = (liczba-(t*1000 + s*100))/10;
+	// obliczenie ile bedzie liczb jednosci
+	j = (liczba-(t*1000 + s*100 + d*10));
+
+	if (liczba != 1) {
+	if (liczba >= 1000) 	// dla liczby tysiecznej 
+	{  	
+
+		switch (t) { 
+
+			case 1: printf("tysiac ");		break;
+			case 2: printf("dwa tysiace ");		break;
+			case 3: printf("trzy tysiace ");	break;
+			case 4: printf("cztery tysiace ");	break;
+			case 5: printf ("piec tysiecy ");	break;
+			case 6: printf ("szesc tysiecy ");	break;
+			case 7: printf("siedem tysiecy ");	break;
+			case 8: printf("osiem tysiecy "); 	break;
+			case 9: printf("dziewiec tysiecy ");	break;
+			}
+		}
+
+	if (liczba >= 100) 	// dla liczby setnej
+	{  		 
+
+		switch (s) {
+		
+			case 1: printf("sto ");		break;
+			case 2: printf("dwiescie ");	break;
+			case 3: printf("trzysta ");	break;
+			case 4: printf("czterysta ");	break;
+			case 5: printf ("piecset ");	break;
+			case 6: printf ("szescset ");	break;
+			case 7: printf("siedemset ");	break;
+			case 8: printf("osiemset "); 	break;
+			case 9: printf("dziewiecset ");	break;
+			}
+		}
+
+	
+	if (liczba > 10) 	// dla liczby dziesietnej 
+	{		
+	
+		switch (d) {
+	
+			case 1: 				break;
+			case 2:	printf("dwadziescia "); 	break;
+			case 3: printf("trzydziesci ");		break;
+			case 4: printf("czterdziesci ");	break;
+			case 5: printf ("piecdziesiat ");	break;
+			case 6: printf ("szescdziesiat ");	break;
+			case 7: printf("siedemdziesiat ");	break;
+			case 8: printf("osiemdziesiat "); 	break;
+			case 9: printf("dziewiecdzieisiat ");	break;
+			}
+		}	
+	
+	if (liczba > 0) 	// dla liczby jednosci
+	{		
+
+			if (d != 1) { 	/* NIE "nascie" */
+				
+				switch (j) {
+	
+				case 1: printf("jeden "); 	break;
+				case 2: printf("dwa ");		break;
+				case 3: printf("trzy ");	break;
+				case 4: printf("cztery ");	break;
+				case 5: printf ("piec ");	break;
+				case 6: printf ("szesc ");	break;
+				case 7: printf("siedem ");	break;
+				case 8: printf("osiem "); 	break;
+				case 9: printf("dziewiec ");	break;
+	
+					}
+		if (j == 2 || j == 3 || j == 4) // odmiana zlotowek 
+		{  
+		printf("zlote"); 
+		}
+		else 
+		{
+		printf("zlotych"); 
+		}
+	}
+
+			if (d == 1) {	/* dla liczb "nascie" */  
+	
+				switch (j) {
+				case 0: printf("dziesiec ");	break;
+				case 1: printf("jedenascie ");	break;
+				case 2: printf("dwanascie ");	break;
+				case 3: printf("trzynascie ");	break;
+				case 4: printf("czternascie ");	break;
+				case 5: printf ("pietnascie ");	break;
+				case 6: printf ("szesnascie ");	break;
+				case 7: printf("siedemnascie ");break;
+				case 8: printf("osiemnacie "); 	break;
+				case 9: printf("dziewietnascie ");break;
+			   }
+				printf("zlotych"); /* koncowka zlotych */ 
+	 } 
+}
+}			
+	printf("\n");
+return 0;
+} 
