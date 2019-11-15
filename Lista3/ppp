@@ -1,109 +1,64 @@
-#include <stdio.h>
+# include <stdio.h>
 
-int main() 
+int main() {
+
+char operator;
+float firstNumber,secondNumber;
+
+printf("Enter an operator (+, -, *,): ");
+scanf("%c", &operator);
+
+printf("Enter two operands: ");
+scanf("%f %f",&firstNumber, &secondNumber);
+
+switch(operator)
 {
+    case '+':
+        printf("%0.2f + %0.2f = %0.2f\n",firstNumber, secondNumber, firstNumber + secondNumber);
+        break;
 
-	int KWOTA[] = {50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100, 				50, 20, 10, 5, 2, 1};		
-	/* wypisanie wszystkich dostepnych banktontow w obiegu pomnozonych 		przez 100 ( od 500 zl do 1 gr) */
+    case '-':
+        printf("%0.2f - %0.2f = %0.2f\n",firstNumber, secondNumber, firstNumber - secondNumber);
+        break;
 
+    case '*':
+        printf("%0.2f * %0.2f = %0.2f\n",firstNumber, secondNumber, firstNumber * secondNumber);
+        break;
 
-	float kwota;		// wpisywana kwoty w formacie 0000.00
-	int x;			// ilosc banknotow/monet danego nominalu
-	int i = 0;		// petla
-	int n;			// zamiana kwoty float na int 
-	
-	printf("BANKOMAT \nPodaj kwote, a otrzymasz minimalna liczbe banknotow oraz monet, potrzebnych,\naby dana kwote wyplacic.\n"); 
+    case '/':
+        printf("%0.2f / %0.2f = %0.2f\n",firstNumber, secondNumber, firstNumber / secondNumber);
+        break;
 
-		// wpisanie kwoty przez uzytkownika 
-	printf("\nWpisz kwote: " ); 
-	scanf("%f", &kwota);
-	
-	printf("Wprowadzono kwote: %3.2f PLN \n", kwota);
-	
-	while ( kwota <= 0 ) 	/* w przypadku wpisania kwoty ujemnej lub 					zerowej*/
-				// walidacja
-	{
-		printf("Podana kwota jest niepoprawna, sprobuj ponownie!\n");
-		printf("\nWpisz kwote: " );  
-		scanf("%f", &kwota);	
-	}
+    // operator doesn't match any case constant (+, -, *, /)
+    default:
+        printf("Error! operator is not correct");
+}
 
-	if (kwota > 0) 
-	{ 
-
-	kwota *= 100;		/* zamiana kwoty z float na int przez 					pomnozenie razy 100 */ 
-	n = kwota;
-
-	printf("\nWYPLATA: \n"); 
-
-	while (n >= 1000) {	/* w przypadku wpisania kwoty w setkach i 					tysiacach - wyliczenie ilosci potrzebnych 					banknotow (od 500 zl do 10 zl)*/
-	 					
-		
-		x = n / KWOTA[i];		// ilosc banknotow
-		n = n % KWOTA[i];		// reszta z dzielenia
-		
-		KWOTA[i] = KWOTA[i] / 100;
-		
-		if (x > 5) {			
-		printf(" %d banknotow %d zl\n", x, KWOTA[i]); 	
-		// wyswietlanie wlasciwej odmiany banknotow danego nominalu 
-			   }
-		if (x == 1) {				
-		printf(" %d banknot %d zl\n", x, KWOTA[i]); 	
-		// wyswietlanie wlasciwej odmiany banknotow danego nominalu 
-			   }
-		if (x == 2 || x == 3 || x == 4) {				
-		printf(" %d banknoty %d zl\n", x, KWOTA[i]); 	
-		// wyswietlanie wlasciwej odmiany banknotow danego nominalu 
-			   }
-		i++;
-			   }
-
-
-	while (n >= 100) {	/* Kwota w dziesiatkach - wyliczenie ilosci 					potrzebnych monet w zl (od 5 zl do 1 zl) */ 
-	
-		x = n / KWOTA[i];
-		n = n % KWOTA[i];
-		KWOTA[i] = KWOTA[i] / 100;
-	
-		if (x > 5) {			
-			
-		printf(" %d monet %d zl\n", x, KWOTA[i]); 	
-		// wyswietlanie wlasciwej odmiany banknotow danego nominalu
-			   }
-		if (x == 1) {				
-		printf(" %d moneta %d zl\n", x, KWOTA[i]); 	
-		// wyswietlanie wlasciwej odmiany banknotow danego nominalu
-			   }
-		if (x == 2 || x == 3 || x == 4) {				
-		printf(" %d monety %d zl\n", x, KWOTA[i]); 	
-		// wyswietlanie wlasciwej odmiany banknotow danego nominalu
-			   }
-		i++;
-			   }
-
-	while (n >= 1) {	/* Kwota w groszach - wyliczenie ile potrzeba 					groszy (*/
-	
-		x = n / KWOTA[i];
-		n = n % KWOTA[i];
-		
-	
-		
-		if (x > 5) {				
-		printf(" %d monet %d gr\n", x, KWOTA[i]); 	
-		// wyswietlanie wlasciwej odmiany banknotow danego nominalu 
-			   }
-		if (x == 1) {				
-		printf(" %d moneta %d gr\n", x, KWOTA[i]); 	
-		// wyswietlanie wlasciwej odmiany banknotow danego nominalu
-			   }
-		if (x == 2 || x == 3 || x == 4) {			
-		printf(" %d monety %d gr\n", x, KWOTA[i]); 	
-		// wyswietlanie wlasciwej odmiany banknotow danego nominalu
-			   }
-		i++;
-			   }
-	}
-		
 return 0;
-} 	
+}
+
+
+
+
+
+
+
+
+
+#include <math.h>
+int float2minute(float time)
+{
+    int hour = (int) floor(time);
+    int minute = (time - hour) * 100;
+    return hour * 60 + minute;
+}
+
+float minute2float(int time)
+{
+    float hour = floor((float)time / 60);
+    float minute = time - hour * 60;
+    return hour + minute / 100;
+}
+
+
+printf("%0.2f + %0.2f = %0.2f\n",firstNumber, secondNumber, minute2float(float2minute(firstNumber) + float2minute(secondNumber)));
