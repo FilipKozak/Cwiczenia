@@ -1,52 +1,64 @@
-# include <stdio.h>
-# include <math.h>
+#include <stdio.h>
+#include <math.h>
 
-int main() {
-int flomin(float time)
+int timmin(float times);
+float mintim(float minutes);
 
-	{
-    int hrs = (int) floor(time);
-    int min = (time - hrs) * 100;
-    return hrs * 60 + min;
-	}
+int timmin(float number)
+{
+    int hours = number;
+    int minutes = (number - hours)*100 + hours*60;
+    return minutes;
+}
 
-float minflo(int time)
-	{
-    float hrs = floor((float)time / 60);
-    float min = time - (hrs * 60);
-    return hrs + (min / 100);
-	}
+float mintim(float min)
+{
+    int hours = min/60;
+    int minutes = min - hours*60;
+    float times = (float)hours + (float)minutes/100;
+    return times;
+}
 
-char operator;
+
+char c;
+
+int main()
+{  
+
 float firstN,secondN;
 
-printf("Wprowadz operator dzialania (+, -, *,): ");
-scanf("%c", &operator);
+printf("Wprowadz operator dzialania (+, -, *, /): \r\n");
+scanf("%c", &c);
 
-printf("Wprowadz dwie liczby, które mają ulec dzialaniu: ");
-scanf("%f %f",&firstN, &secondN);
+printf("Wprowadz dwie liczby, ktore maja ulec dzialaniu( W formacie 00.00): \r\n");
+printf("Pierwsza: \r\n");
+scanf("%f",&firstN);
+printf("Druga: \r\n");
+scanf("%f", &secondN);
 
-switch(operator)
+int time_in_min;
+
+switch(c)
 	{
     case '+':
-    	printf("%0.2f + %0.2f = %0.2f\n",firstN, secondN, minflo(flomin(firstN) + flomin(secondN)));
+        time_in_min = timmin(firstN) + timmin(secondN);
+    	printf("%0.2f + %0.2f = %0.2f\n",firstN, secondN, mintim(time_in_min));
         break;
-
     case '-':
-    	printf("%0.2f - %0.2f = %0.2f\n",firstN, secondN, minflo(flomin(firstN) - flomin(secondN)));
+        time_in_min = timmin(firstN) - timmin(secondN);
+    	printf("%0.2f - %0.2f = %0.2f\n",firstN, secondN, mintim(time_in_min));
         break;
-
     case '*':
-    	printf("%0.2f * %0.2f = %0.2f\n",firstN, secondN, minflo(flomin(firstN) * flomin(secondN)));
+        time_in_min = timmin(firstN) * secondN;
+    	printf("%0.2f * %0.2f = %0.2f\n",firstN, secondN, mintim(time_in_min));
         break;
-
     case '/':
-    	printf("%0.2f / %0.2f = %0.2f\n",firstN, secondN, minflo(flomin(firstN) / flomin(secondN)));
+        time_in_min = timmin(firstN) / secondN;
+    	printf("%0.2f / %0.2f = %0.2f\n",firstN, secondN, mintim(time_in_min));
         break;
-
     default:
-        printf("Operator nie poprawny");
+       printf("Operator nie poprawny");
 	}
-
-return 0;
+	
+return 0;		
 }
